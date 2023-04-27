@@ -17,20 +17,24 @@ export function Post(){
                 
             </header>
             <div className={Style.content}>
-                <p>hey guys this is my portfolio
-                I did this project to talk about my self and 
-               <a href="https://github/marcelorox">this is the link for my gitHub just click here</a>  
-               <a href="">#newproject #mygithubmylife</a>
-                </p>
+                <p>hey guys this is my portfolio</p>
+               <p>I did this project to talk about my self and </p> 
+               <p><a target='_blank' href="https://github.com/Marcelorox">this is the link for my gitHub just click here</a>  </p>
+               
+               <p><a href="">#newproject{' '} #mygithubmylife{' '}</a></p>
+                
 
             </div>
+
             <form action="" className={Style.commentForm}>
-                <strong>Deixe seu feedback</strong>
+                <strong>write your feedback</strong>
 
-                <textarea 
-                placeholder='deixe um comentario'/>
+                <textarea className= {Style.textarea}
+                placeholder='put your comment'/>
 
-                <button type='submit'>Comentar</button>
+               <footer>
+                    <button type='submit'>publish</button>
+                </footer> 
             </form>
 
         </article>
