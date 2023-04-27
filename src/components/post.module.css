@@ -1,0 +1,31 @@
+.post{
+    background-color: var(--gray-800);
+    border-radius: 8px;
+    padding: 2.5rem;
+}
+.post + .post{
+    margin-top: 2rem;
+}
+.content{
+    line-height: 1.6;
+    color: var(--gray-300);
+    margin-top: 1.5rem;
+
+}
+.content p{
+    margin-top: 1rem;
+}
+.content a{
+    font-weight: bold;
+    color: var(--green-500);
+    text-decoration: none;
+}
+.author{
+    
+}
+.avatar{
+
+}
+.authorContainer{
+
+}
