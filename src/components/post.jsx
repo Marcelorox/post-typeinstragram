@@ -1,27 +1,43 @@
-import Style from './post.module.css'
+import { format, formatDistanceToNow } from 'date-fns';
 
-export function Post(){
+import { Comment } from './Comment'
+import { Avatar } from './Avatar'
+
+
+
+
+import Style from './post.module.css'
+export function Post({author, publishedAt, content}){
+    const PublishedDateFormatted = format(publishedAt, "d 'of' LLLL 'in' HH:mm'h'")
+
+    const publishedDateRelativeToNow = formatDistanceToNow(publishedAt,{
+        addSuffix:true
+    })
     return(
         <article className={Style.post}>
             <header>
                 <div className={Style.author}>
-                    <img className={Style.avatar} src="https://github.com/marcelorox.png" alt="" />
+                    <Avatar src={author.avatarUrl} alt="" />
                     <div className={Style.authorContainer}>
-                        <strong>Marcelo Rocha</strong>
-                        <span>Web Developer</span>
+                        <strong>{author.name}</strong>
+                        <span>{author.role}</span>
                     </div>
                 </div>
                 
-                <time title='wednesday april 9:14h PM' dateTime='2022-05-11 9:14:30'>Publicado a 1hr</time>
+                <time title={PublishedDateFormatted} dateTime={publishedAt.toISOString()}> {publishedDateRelativeToNow}</time>
 
                 
             </header>
             <div className={Style.content}>
-                <p>hey guys this is my portfolio</p>
-               <p>I did this project to talk about my self and </p> 
-               <p><a target='_blank' href="https://github.com/Marcelorox">this is the link for my gitHub just click here</a>  </p>
-               
-               <p><a href="">#newproject{' '} #mygithubmylife{' '}</a></p>
+                {content.map(line =>{
+
+                    if (line.type === 'paragraph'){
+                        return <p>{line.content}</p>
+                    }else if(line.type === "link"){    
+                        return <p><a href="">{line.content}</a></p>
+                    }
+                    
+                })}
                 
 
             </div>
@@ -36,6 +52,11 @@ export function Post(){
                     <button type='submit'>publish</button>
                 </footer> 
             </form>
+            <div className={Style.commentList}>
+                <Comment/>
+                <Comment/>
+                <Comment/>
+            </div>
 
         </article>
     )
